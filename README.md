@@ -1,72 +1,88 @@
----
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
-(https://opensource.org/licenses/MIT)
-# 🚀 Plateforme d’Orchestration de Rendez-vous Distribuée Orchestréa
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# 🚀 Plateforme d’Orchestration de Rendez-vous Distribuée — **Orchestréa**
 
 ## Description
-Cette plateforme est une solution de réservation et d’optimisation de rendez-vous (conseils, démonstrations, ateliers) reposant sur une architecture distribuée par microservices.
-La solution gère en temps réel les disponibilités, synchronise les calendriers et envoie des notifications aux utilisateurs.
+
+**Orchestréa** est une solution de réservation et d’optimisation de rendez-vous (conseils, démonstrations, ateliers), reposant sur une architecture distribuée basée sur des microservices.  
+La plateforme gère en temps réel les disponibilités, synchronise les calendriers et envoie des notifications aux utilisateurs.
+
 👉 [Lien du dépôt GitHub](https://github.com/Steph-mss/ApplicationMicroservice)
 
 ---
-## Fonctionnalités Clés
-- **Service de Réservation**  
+
+## Fonctionnalités clés
+
+- **Service de réservation**  
   - Réservation, modification et annulation de rendez-vous  
-  - Synchronisation d’un calendrier interactif
+  - Synchronisation avec un calendrier interactif
 
-- **Gestion des Calendriers**  
-  - Intégration avec les agendas des différents intervenants pour afficher les disponibilités en temps réel
+- **Gestion des calendriers**  
+  - Intégration avec les agendas des intervenants pour afficher les disponibilités en temps réel
 
-- **Service de Notifications**  
+- **Service de notifications**  
   - Envoi d’alertes (email/SMS) pour confirmer ou rappeler les rendez-vous
 
-- **Interface Administrative**  
+- **Interface administrative**  
   - Tableau de bord pour la gestion des plannings, l’analyse de l’historique et la génération de rapports
 
-## Architecture et Approches Techniques
+---
+
+## Architecture et approches techniques
+
 - **Microservices**  
-  Chaque fonctionnalité est déployée sous forme de microservices indépendants pour faciliter la scalabilité et la maintenance.
+  Chaque fonctionnalité est déployée sous forme de microservice indépendant pour faciliter la scalabilité et la maintenance.
 
-- **Bases de Données Multiples**  
-  Utilisation de trois systèmes de bases de données :
-  - **MySQL** pour certaines opérations relationnelles
-  - **PostgreSQL** pour des transactions robustes et des requêtes complexes
-  - **MongoDB** pour une gestion flexible des données non structurées
+- **Bases de données multiples**  
+  Utilisation de trois systèmes de bases de données :  
+  - **MySQL** pour les opérations relationnelles  
+  - **PostgreSQL** pour les transactions robustes et les requêtes complexes  
+  - **MongoDB** pour la gestion flexible des données non structurées
 
-- **Docker & Orchestration**  
+- **Docker & orchestration**  
   - Création de Dockerfiles individuels pour chaque service  
-  - Utilisation de `docker-compose.yml` pour faciliter la communication entre les conteneurs  
+  - Utilisation d’un fichier `docker-compose.yml` pour faciliter la communication entre les conteneurs  
   - Gestion des réseaux Docker et des volumes pour la persistance des données
 
-- **API Gateway & Sécurité**  
-  - Centralisation des appels aux microservices via un API Gateway  
-  - Mise en place de l’authentification et de l’autorisation (avec JWT)
+- **API Gateway & sécurité**  
+  - Centralisation des appels aux microservices via une API Gateway  
+  - Mise en place de l’authentification et de l’autorisation (JWT)
 
-- **Intégration avec GitLab**  
+- **Intégration continue avec GitLab**  
   - Versionnement du code sur GitLab  
   - Pipelines CI/CD automatisés pour la construction des images, les tests et le déploiement progressif
 
-## Répartition en Binôme
+---
+
+## Répartition des rôles
+
 - **Développeur Front-end**  
   - Création d’une interface en **Angular 19** avec un composant calendrier interactif
 
 - **Développeur Back-end**  
-  - Conception des microservices en **Java Spring Boot** (en respectant DDD et l’architecture hexagonale)  
+  - Conception des microservices en **Java Spring Boot** (architecture DDD et hexagonale)  
   - Conteneurisation avec Docker
 
-## Prérequis et Installation
+---
+
+## Prérequis et installation
 
 ### Prérequis
-- Node.js, Java Spring Boot et Angular 19 (pour les différents services)
-- Docker et Docker Compose
-- GitLab pour la gestion du versionnage et CI/CD
-- Bases de données : MySQL, PostgreSQL et MongoDB
+
+- Node.js  
+- Java Spring Boot  
+- Angular 19  
+- Docker et Docker Compose  
+- GitLab pour la gestion du versionnage et CI/CD  
+- Bases de données : MySQL, PostgreSQL et MongoDB
 
 ### Installation
+
 1. **Cloner le dépôt**  
    ```bash
-   git clone https://gitlab.com/nom-utilisateur/orchestrea.git A CHANGER
-   cd orchestrea
+   git clone https://github.com/Steph-mss/ApplicationMicroservice.git
+   cd ApplicationMicroservice
+
 2. **Lancer les services Docker**
    ```bash
    docker-compose up --build
@@ -79,13 +95,7 @@ API Gateway : http://localhost:8080
 
 ---
 
-### 📜 Licence
-
-Ce projet est sous licence **MIT**.
-
-
-
-## Licence
+## 📜 Licence
 
 Ce projet est distribué sous les termes de la [Licence CeCILL v2.1](https://cecill.info/licences/Licence_CeCILL_V2.1-fr.html).  
 Pour consulter le texte complet, veuillez consulter le fichier [LICENSE](./LICENSE).
