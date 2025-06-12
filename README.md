@@ -1,9 +1,14 @@
-# Plateforme d’Orchestration de Rendez-vous Distribuée Orchestréa
+---
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
+(https://opensource.org/licenses/MIT)
+# 🚀 Plateforme d’Orchestration de Rendez-vous Distribuée Orchestréa
 
 ## Description
 Cette plateforme est une solution de réservation et d’optimisation de rendez-vous (conseils, démonstrations, ateliers) reposant sur une architecture distribuée par microservices.
 La solution gère en temps réel les disponibilités, synchronise les calendriers et envoie des notifications aux utilisateurs.
+👉 [Lien du dépôt GitHub](https://github.com/Steph-mss/ApplicationMicroservice)
 
+---
 ## Fonctionnalités Clés
 - **Service de Réservation**  
   - Réservation, modification et annulation de rendez-vous  
@@ -70,6 +75,14 @@ La solution gère en temps réel les disponibilités, synchronise les calendrier
 Interface utilisateur : http://localhost:4200
 
 API Gateway : http://localhost:8080
+
+
+---
+
+### 📜 Licence
+
+Ce projet est sous licence **MIT**.
+
 
 
 ## Licence
