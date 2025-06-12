@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo:5
+    container_name: mongodb_db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  api-gateway:
+    build: ./services/api-gateway
+    container_name: api_gateway
+    depends_on:
+      - reservation-service
+      - calendar-service
+      - notification-service
+    ports:
+      - "8080:8080"
+
+  reservation-service:
+    build: ./services/reservation-service
+    container_name: reservation_service
+    environment:
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DB=${MYSQL_DB}
+      - TOKEN_SECRET=${TOKEN_SECRET}
+    depends_on:
+      - mysql
+    ports:
+      - "8081:8080"
+
+  angular-app:
+    build: ./front-end/angular-app
+    container_name: angular_app
+    ports:
+      - "4200:4200"
+    environment:
+      - API_GATEWAY_URL=http://localhost:8080
+    depends_on:
+      - api-gateway
+
+volumes:
+  mysql_data:
+  postgres_data:
+  mongo_data:

@@ -1,0 +1,21 @@
+<div class="container">
+  <form (submit)="login()" [formGroup]="loginForm">
+    <h1>Login</h1>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+    <button mat-flat-button [disabled]="loginForm.invalid">Login</button>
+    @if (invalidCredentials) {
+    <mat-error>invalid Credentials</mat-error>
+    }
+    <button mat-button color="accent" (click)="navigateRegister()">
+      Inscription
+    </button>
+  </form>
+</div>
